@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static "css/main.css" %}">
+    </head>
+    <body>
+
+<h1>Create A Character</h1>
+
+<form action="/create/" method="post">
+    {% csrf_token %}
+    <table cellpadding="2">
+        <tr>
+            <td>
+            <label for="{{ form.char_name.id_for_label }}">Character name:</label>
+            {{ form.char_name }}
+            </td>
+            <td>
+            <label for="{{ form.player_name.id_for_label }}">Player name:</label>
+            {{ form.player_name }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="{{ form.max_health.id_for_label }}">Max Health:</label>
+                {{ form.max_health }}
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+        <label for="{{ form.strength.id_for_label }}">Strength:</label>
+        {{ form.strength }}
+            </td>
+            <td>
+        <label for="{{ form.dexterity.id_for_label }}">Dexterity:</label>
+        {{ form.dexterity }}
+            </td>
+            <td>
+        <label for="{{ form.constitution.id_for_label }}">Constitution:</label>
+        {{ form.constitution }}
+            </td>
+            <td>
+        <label for="{{ form.intelligence.id_for_label }}">Intelligence:</label>
+        {{ form.intelligence }}
+            </td>
+            <td>
+        <label for="{{ form.wisdom.id_for_label }}">Wisdom:</label>
+        {{ form.wisdom }}
+            </td>
+            <td>
+        <label for="{{ form.charisma.id_for_label }}">Charisma:</label>
+        {{ form.charisma }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.proficiencies }}
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit" />
+</form>
+
+<h3><a href="/">Home</a></h3>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static "css/main.css" %}">
+    </head>
+    <body>
+
+{% if char %}
+    <table>
+    <tr>
+        <td>
+    <form action="/{{ char.id }}/" method="post">
+        {% csrf_token %}
+
+        <ul>
+            <li>Name: {{ char.char_name }}</li>
+            <li>Player Name: {{ char.player_name }}</li>
+            <li>Health: {{ form }} / {{ char.max_health }}</li>
+            <li>Strength: {{ char.strength }} | {{ str_mod }}</li>
+            <li>Dexterity: {{ char.dexterity }} | {{ dex_mod }}</li>
+            <li>Constitution: {{ char.constitution }} | {{ con_mod }}</li>
+            <li>Intelligence: {{ char.intelligence }} | {{ int_mod }}</li>
+            <li>Wisdom: {{ char.wisdom }} | {{ wis_mod }}</li>
+            <li>Charisma: {{ char.charisma }} | {{ chr_mod }}</li>
+        </ul>
+        <input type="submit" value="Save" />
+        </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Acrobatics:
+        </td>
+        <td>
+            Animal Handling:
+        </td>
+    </tr>
+    </table>
+{% else %}
+    <p>Character not found.</p>
+{% endif %}
+
+
+
+<a href="/">Home</a>
+
+   </body>
+</html>
