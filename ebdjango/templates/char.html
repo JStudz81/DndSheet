@@ -16,7 +16,7 @@
         <ul>
             <li>Name: {{ char.char_name }}</li>
             <li>Player Name: {{ char.player_name }}</li>
-            <li>Health: {{ form }} / {{ char.max_health }}</li>
+            <li>Health: {{ form.health }} / {{ char.max_health }}</li>
             <li>Strength: {{ char.strength }} | {{ str_mod }}</li>
             <li>Dexterity: {{ char.dexterity }} | {{ dex_mod }}</li>
             <li>Constitution: {{ char.constitution }} | {{ con_mod }}</li>
@@ -27,17 +27,20 @@
         <input type="submit" value="Save" />
         </form>
         </td>
-    </tr>
 
+
+    {% for prof in prof_list %}
     <tr>
         <td>
-            Acrobatics:
-        </td>
-        <td>
-            Animal Handling:
+            {{ prof }}:
         </td>
     </tr>
+    {% endfor %}
+
     </table>
+
+    <p>{{ proficiencies }}</p>
+
 {% else %}
     <p>Character not found.</p>
 {% endif %}

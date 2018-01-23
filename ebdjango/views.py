@@ -16,6 +16,27 @@ def index(request):
 def character(request, character_id):
     char = get_object_or_404(Character, pk=character_id)
 
+    prof_list = [
+        'Acrobatics',
+        'Animal Handling',
+        'Arcana',
+        'Athletics',
+        'Deception',
+        'History',
+        'Insight',
+        'Intimidation',
+        'Investigation',
+        'Medicine',
+        'Nature',
+        'Perception',
+        'Performance',
+        'Persuasion',
+        'Religion',
+        'Sleight of Hand',
+        'Stealth',
+        'Survival'
+    ]
+
     if request.method == 'GET':
         context = {
             'char': char,
@@ -25,6 +46,8 @@ def character(request, character_id):
             'int_mod': __abilityMod(char.intelligence),
             'wis_mod': __abilityMod(char.wisdom),
             'chr_mod': __abilityMod(char.charisma),
+            'proficiencies': char.proficiencies,
+            'prof_list': prof_list,
             'form': CharUpdateForm(initial={'health': char.health})
         }
         return render(request, 'char.html', context)
